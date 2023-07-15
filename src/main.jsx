@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
 import "./index.css";
 import Home from "./pages/Home.jsx";
 import Crypto from "./pages/Crypto.jsx";
@@ -8,6 +7,7 @@ import Trending from "./pages/Trending.jsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Saved from "./pages/Saved.jsx";
+import Table from "./components/Table.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +26,7 @@ const router = createBrowserRouter([
         path: "/saved",
         element: <Saved />,
       },
+    
     ],
   },
 ]);

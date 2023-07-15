@@ -29,7 +29,7 @@ const Navigation = () => {
         Crypto
       </NavLink>{" "}
       <NavLink
-        to="/saved"
+        to="/saved  "
         className={({ isActive }) => {
           return `w-full  ${
             isActive

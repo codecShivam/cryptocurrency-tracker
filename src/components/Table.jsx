@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+
 
 const Table = () => {
+
+  
+
   return (
-    <div className="flex flex-col mt-9 border border-gray-100 rounded">
+    <div className="flex w-[80%] flex-col mt-9 border border-gray-100 rounded">
+
         <table className="w-full table-auto">
             <thead className="capitalize text-base text-gray-100 text-md border-b border-gray-100"> 
                 <tr>
@@ -17,7 +22,7 @@ const Table = () => {
                 </tr>
             </thead>
             <tbody>
-            <tr className="text-center text-base border-b borde-gray-100 hover:bg-gray-200 last:border-b-0 ">
+            <tr className="text-center text-base text-white capitalize  border-b borde-gray-100 hover:bg-gray-200 last:border-b-0 ">
                     <td className="py-4">asset</td>
                     <td className="py-4">name</td>
                     <td className="py-4">price</td>
