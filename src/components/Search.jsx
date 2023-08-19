@@ -5,16 +5,21 @@ import { useContext } from "react";
 import { CryptoContext } from "../context/CryptoContext";
 
 const Search = () => {
-  const [searchtext, setSearchtext] = useState(""); // search state
-  let {getSearchResult} = useContext(CryptoContext);
+  const [searchText, setSearchText] = useState(""); // search state
+  let { getSearchResult } = useContext(CryptoContext);
   const handleInput = (e) => {
-    let query = e.preventDefault();
-    setSearchtext(query);
+     e.preventDefault();
+     let query = e.target.value;
+    setSearchText(query);
+    getSearchResult(query);
   };
 
   return (
     <div>
-      <form className="w-96 relative flex items-center ml-7 font-nunito ">
+      <form 
+      onChange={handleInput}
+      className="w-96 relative flex items-center ml-7 font-nunito ">
+
         <input
           typeof="text"
           name="search"
@@ -26,7 +31,7 @@ const Search = () => {
           <img src={searchIcon} className="w-full h-auto" alt="search" />
         </button>
       </form>
-      {searchtext.length > 0 ? (
+      {searchText.length > 0 ? (
         <ul className="absolute top-11 right-0 w-full  h-96 rounded overflow-x-hidden py-2 bg-gray-200 bg-opacity-60 backdrop-blur-md">
           <li>bitcoin</li>
           <li>ethereum</li>
