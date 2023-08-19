@@ -1,12 +1,15 @@
 import React from "react";
 import { useState } from "react";
 import searchIcon from "../assets/search-icon.svg";
+import { useContext } from "react";
+import { CryptoContext } from "../context/CryptoContext";
 
 const Search = () => {
-  const [search, setSearch] = useState(""); // search state
- const handleInputChange = (e) => {
-    e.preventDefault();
-    setSearch(e.target.value);
+  const [searchtext, setSearchtext] = useState(""); // search state
+  let {getSearchResult} = useContext(CryptoContext);
+  const handleInput = (e) => {
+    let query = e.preventDefault();
+    setSearchtext(query);
   };
 
   return (
@@ -23,7 +26,7 @@ const Search = () => {
           <img src={searchIcon} className="w-full h-auto" alt="search" />
         </button>
       </form>
-      {search.length > 0 ? (
+      {searchtext.length > 0 ? (
         <ul className="absolute top-11 right-0 w-full  h-96 rounded overflow-x-hidden py-2 bg-gray-200 bg-opacity-60 backdrop-blur-md">
           <li>bitcoin</li>
           <li>ethereum</li>

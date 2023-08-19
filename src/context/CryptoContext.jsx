@@ -18,7 +18,7 @@ export const CryptoProvider = ({ children }) => {
       console.log(error);
     }
   };
-  const getSearchData = async (query) => {
+  const getSearchResult = async (query) => {
     try {
       const data = await fetch(
         "https://api.coingecko.com/api/v3/search?query=${query}"
@@ -35,7 +35,7 @@ export const CryptoProvider = ({ children }) => {
   }, []);
 
   return (
-    <CryptoContext.Provider value={{ cryptoData }}>
+    <CryptoContext.Provider value={{ cryptoData, searchData, getSearchResult }}>
       {children}
     </CryptoContext.Provider>
   );
