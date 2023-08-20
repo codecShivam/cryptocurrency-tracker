@@ -5,6 +5,7 @@ import debounce from "lodash.debounce";
 
 const SearchInput = ({ handleSearch }) => {
   const [searchText, setSearchText] = useState(""); // search state
+  let { searchData } = useContext(CryptoContext); // search data
 
   const handleInput = (e) => {
     const query = e.target.value;
@@ -32,8 +33,30 @@ const SearchInput = ({ handleSearch }) => {
       </form>
       {searchText.length > 0 ? (
         <ul className="absolute top-11 right-0 w-full h-96 rounded overflow-x-hidden py-2 bg-gray-200 bg-opacity-60 backdrop-blur-md">
-          <li>bitcoin</li>
-          <li>ethereum</li>
+          {searchData ? (
+            searchData.map((coin) => {
+              return (
+                <li
+                  key={coin.id}
+                  className="flex items-center justify-between px-3 py-2 hover:bg-gray-300"
+                >
+                  <div className="flex items-center">
+                    <img
+                      src={coin.large}
+                      className="w-8 h-8 rounded-full"
+                      alt={coin.name}
+                    />
+                    <p className="ml-2">{coin.name}</p>
+                  </div>
+                  <p className="font-bold text-cyan">{coin.symbol}</p>
+                </li>
+              );
+            })
+          ) : (
+            <li className="flex items-center justify-center px-3 py-2 hover:bg-gray-300">
+              <p className="text-gray-100">Please wait...</p>
+            </li>
+          )}
         </ul>
       ) : null}
     </div>
@@ -45,7 +68,7 @@ const Search = () => {
 
   const debounceFunc = debounce(function (val) {
     getSearchResult(val);
-  }, 1000); // Adjust the debounce time according to your needs
+  }, 1000);
 
   return (
     <div>
