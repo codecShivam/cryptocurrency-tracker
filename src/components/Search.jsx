@@ -5,7 +5,7 @@ import debounce from "lodash.debounce";
 
 const SearchInput = ({ handleSearch }) => {
   const [searchText, setSearchText] = useState(""); // search state
-  let { searchData } = useContext(CryptoContext); // search data
+  let { searchData, setCoinSearch, setSearchData } = useContext(CryptoContext); // search data
 
   const handleInput = (e) => {
     const query = e.target.value;
@@ -13,10 +13,21 @@ const SearchInput = ({ handleSearch }) => {
     handleSearch(query);
   };
 
+  const handleSubmit = (e) => { 
+    e.preventDefault();
+    handleSearch(searchText);
+  };
+
+  const selectCoin = (coin) => {
+    setCoinSearch(coin);
+    setSearchText("");
+    setSearchData();
+  };
+  
   return (
     <div>
       <form
-        onSubmit={(e) => e.preventDefault()}
+        onSubmit={(e) => handleSubmit(e)}
         className="w-96 relative flex items-center ml-7 font-nunito"
       >
         <input
@@ -31,13 +42,14 @@ const SearchInput = ({ handleSearch }) => {
           <img src={searchIcon} className="w-full h-auto" alt="search" />
         </button>
       </form>
-      {searchText.length > 0 ? (
+      {searchText.length === 0 ? (
         <ul className="absolute top-11 right-0 w-full h-96 rounded overflow-x-hidden py-2 bg-gray-200 bg-opacity-60 backdrop-blur-md">
           {searchData ? (
             searchData.map((coin) => {
               return (
                 <li
                   key={coin.id}
+                  onClick={() => selectCoin(coin.id)}
                   className="flex items-center justify-between px-3 py-2 hover:bg-gray-300"
                 >
                   <div className="flex items-center">
@@ -71,7 +83,7 @@ const Search = () => {
   }, 1000);
 
   return (
-    <div>
+    <div className="relative">
       <SearchInput handleSearch={debounceFunc} />
     </div>
   );
