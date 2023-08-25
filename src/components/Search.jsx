@@ -13,7 +13,7 @@ const SearchInput = ({ handleSearch }) => {
     handleSearch(query);
   };
 
-  const handleSubmit = (e) => { 
+  const handleSubmit = (e) => {
     e.preventDefault();
     handleSearch(searchText);
   };
@@ -23,7 +23,7 @@ const SearchInput = ({ handleSearch }) => {
     setSearchText("");
     setSearchData();
   };
-  
+
   return (
     <div>
       <form
@@ -42,7 +42,7 @@ const SearchInput = ({ handleSearch }) => {
           <img src={searchIcon} className="w-full h-auto" alt="search" />
         </button>
       </form>
-      {searchText.length === 0 ? (
+      {searchText.length > 0 ? (
         <ul className="absolute top-11 right-0 w-full h-96 rounded overflow-x-hidden py-2 bg-gray-200 bg-opacity-60 backdrop-blur-md">
           {searchData ? (
             searchData.map((coin) => {
@@ -65,9 +65,14 @@ const SearchInput = ({ handleSearch }) => {
               );
             })
           ) : (
-            <li className="flex items-center justify-center px-3 py-2 hover:bg-gray-300">
-              <p className="text-gray-100">Please wait...</p>
-            </li>
+            <div className="w-full h-full flex justify-center items-center">
+              <div
+                className=" w-8 h-8 border-4 border-cyan rounded-full border-b-gray-200 animate-spin"
+                role="status"
+              >
+              </div>
+                <span className="ml-2">Searching...</span>
+            </div>
           )}
         </ul>
       ) : null}
