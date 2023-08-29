@@ -23,7 +23,7 @@ const Table = () => {
               </tr>
             </thead>
             <tbody>
-              {cryptoData.map((data, index) => {
+              {cryptoData.map((data) => {
                 return (
                   <tr
                     key={data.id}
