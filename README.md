@@ -2,6 +2,19 @@
 
 Welcome to the Cryptocurrency Tracker project! This web application allows you to track the latest prices and trends of various cryptocurrencies in real-time.
 
+## Table of Contents
+
+- [About](#about)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+
+## About
+
+This project is a web application that allows you to track the latest prices and trends of various cryptocurrencies in real-time. It is built using React and Vite, and it uses the Coingecko API to fetch cryptocurrency data.
+
 ## Features
 
 - View real-time cryptocurrency prices, market cap, volume, and price changes.
