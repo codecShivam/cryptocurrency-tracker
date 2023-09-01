@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CryptoContext } from "./../context/CryptoContext";
 import Pagination from "./Pagination";
-// import { StorageContext } from "./../context/StorageContext";
+import { StorageContext } from "./../context/StorageContext";
 
 const SaveBtn = ({ data }) => {
   const { saveCoin, allCoins, removeCoin } = useContext(StorageContext);
@@ -50,7 +50,7 @@ const SaveBtn = ({ data }) => {
   );
 };
 
-const TableComponent = () => {
+const Table = () => {
   let { cryptoData, currency,error } = useContext(CryptoContext);
 
   return (
@@ -187,4 +187,4 @@ const TableComponent = () => {
   );
 };
 
-export default TableComponent;
+export default Table;
