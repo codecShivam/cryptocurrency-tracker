@@ -11,6 +11,23 @@ export const CryptoProvider = ({ children }) => {
   const [page, setPage] = useState(1); // page state
   const [totalPages, setTotalPages] = useState(250); // total pages state
   const [perPage, setPerPage] = useState(10); // per page state
+  const [coinData, setCoinData] = useState(); // coin data state
+
+  const getCoinData = async (coinid) => {
+    setCoinData();
+    try {
+      const data = await fetch(
+        `https://api.coingecko.com/api/v3/coins/${coinid}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=true&sparkline=false`
+      )
+        .then((res) => res.json())
+        .then((json) => json);
+
+      // console.log("CoinData", data);
+      setCoinData(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const getCryptoData = async () => {
     try {
@@ -57,7 +74,7 @@ export const CryptoProvider = ({ children }) => {
 
   useLayoutEffect(() => {
     getCryptoData();
-  }, [coinSearch, currency, sortBy, page , perPage]);
+  }, [coinSearch, currency, sortBy, page, perPage]);
 
   return (
     <CryptoContext.Provider
@@ -77,7 +94,9 @@ export const CryptoProvider = ({ children }) => {
         setTotalPages,
         resetFunction,
         perPage,
-        setPerPage
+        setPerPage,
+        getCoinData,
+        coinData,
       }}
     >
       {children}
