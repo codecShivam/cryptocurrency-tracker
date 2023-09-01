@@ -24,13 +24,6 @@ const SaveBtn = ({ data }) => {
       onClick={(e) => handleClick(e)}
     >
       <svg
-        className={`w-[1.5rem] ml-1.5 
-                      ${
-                        allCoins.includes(data.id)
-                          ? "fill-cyan"
-                          : "fill-gray-100"
-                      }
-                       hover:fill-cyan`}
         width="30"
         height="30"
         viewBox="0 0 30 30"
@@ -51,7 +44,7 @@ const SaveBtn = ({ data }) => {
 };
 
 const Table = () => {
-  let { cryptoData, currency,error } = useContext(CryptoContext);
+  let { cryptoData, currency, error } = useContext(CryptoContext);
 
   return (
     <>
@@ -149,7 +142,7 @@ const Table = () => {
               })}
             </tbody>
           </table>
-        ) : (!error.data && !error.search) ? (
+        ) : !error.data && !error.search ? (
           <div className="w-full min-h-[50vh] flex justify-center items-center">
             <div
               className="w-8 h-8 border-4 border-solid border-cyan rounded-full border-b-gray-200 animate-spin"
@@ -164,8 +157,6 @@ const Table = () => {
               : error.search
               ? error.search
               : "Something unexpected happened!"}
-              {/* Here we have use multi chain conditions using ternary operator/ this is not
-              covered in the video but for the example and some improvements */}
           </h1>
         ) : null}
       </div>
