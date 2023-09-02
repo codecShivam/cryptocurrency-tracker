@@ -3,11 +3,14 @@ import { Outlet } from "react-router-dom";
 import Logo from "../components/Logo";
 import Navigation from "../components/Navigation";
 import { CryptoProvider } from "../context/CryptoContext";
-
+import { StorageProvider } from "../context/StorageContext";
+import { TrendingProvider } from "../context/TrendingContext";
 
 const Home = () => {
   return (
     <CryptoProvider>
+      <TrendingProvider>
+        <StorageProvider>
           <main
             className="w-full h-full flex flex-col first-letter:
     content-center items-center relative text-white font-nunito
@@ -19,6 +22,8 @@ const Home = () => {
 
             <Outlet />
           </main>
+        </StorageProvider>
+      </TrendingProvider>
     </CryptoProvider>
   );
 };
