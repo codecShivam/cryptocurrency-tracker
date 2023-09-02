@@ -26,7 +26,7 @@ const Navigation = () => {
           }  text-center font-nunito m-2.5 text-base  border-0 cursor-pointer rounded capitalize font-semibold`;
         }}
       >
-        Crypto
+        Trending
       </NavLink>{" "}
       <NavLink
         to="/saved  "
@@ -38,7 +38,7 @@ const Navigation = () => {
           }   text-center font-nunito m-2.5 text-base  border-0 cursor-pointer rounded capitalize font-semibold`;
         }}
       >
-        Crypto
+        Saved
       </NavLink>
     </nav>
   );
