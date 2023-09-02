@@ -79,6 +79,8 @@ export const CryptoProvider = ({ children }) => {
   const resetFunction = () => {
     setPage(1);
     setCoinSearch("");
+    setCurrency("usd");
+    setSortBy("market_cap_desc");
   };
 
   useLayoutEffect(() => {
