@@ -99,8 +99,6 @@ const Saved = () => {
                         </Link>
                       </td>
                       <td className="py-4">
-                        {/* ${Number(data.current_price).toFixed(2)} */}
-
                         {new Intl.NumberFormat("en-IN", {
                           style: "currency",
                           currency: currency,

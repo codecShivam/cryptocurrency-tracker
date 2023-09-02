@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import {
     createContext,
     useContext,
@@ -8,10 +7,8 @@ import {
   } from "react";
   import { CryptoContext } from "./CryptoContext";
   
-  // create context object
   export const StorageContext = createContext({});
   
-  // create the provider component
   export const StorageProvider = ({ children }) => {
     const [allCoins, setAllCoins] = useState([]);
     const [savedData, setSavedData] = useState();
@@ -49,7 +46,6 @@ import {
           .then((res) => res.json())
           .then((json) => json);
   
-        // console.log(data);
         setSavedData(data);
       } catch (error) {
         console.log(error);
@@ -72,10 +68,8 @@ import {
       let isThere = JSON.parse(localStorage.getItem("coins")) || false;
   
       if (!isThere) {
-        //set the localstorage with empty array
         localStorage.setItem("coins", JSON.stringify([]));
       } else {
-        //set the state with the current values from the local storage
         let totalCoins = JSON.parse(localStorage.getItem("coins"));
         setAllCoins(totalCoins);
   
