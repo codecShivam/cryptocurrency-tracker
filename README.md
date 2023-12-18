@@ -25,7 +25,7 @@ This project is a web application that allows you to track the latest prices and
 
 - React: A JavaScript library for building user interfaces.
 - Vite: A fast development build tool that supports React.
-- API: ....
+- API: CoinGecko API
 
 ## Getting Started
 
